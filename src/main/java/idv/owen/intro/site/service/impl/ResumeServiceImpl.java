@@ -17,4 +17,8 @@ public class ResumeServiceImpl implements ResumeService {
         return resumeRepository.save(resume);
     }
 
+    @Override
+    public Resume findById() {
+        return resumeRepository.findById(1L).orElse(null);
+    }
 }

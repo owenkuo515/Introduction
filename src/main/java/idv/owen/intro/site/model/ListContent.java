@@ -1,10 +1,13 @@
 package idv.owen.intro.site.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ListContent")
+@JsonIgnoreProperties(value = {"resume"})
 public class ListContent extends BaseEntity {
 
     public ListContent() {
