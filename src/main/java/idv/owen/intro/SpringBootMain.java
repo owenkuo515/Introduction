@@ -2,6 +2,7 @@ package idv.owen.intro;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * Created by Owen
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //@ComponentScan(basePackages = {"team.practice.englishtypingtest.site.controller","team.practice.englishtypingtest.site.service"})
 //@EnableAutoConfiguration
 @SpringBootApplication
+@PropertySource({"classpath:intro.properties"})
 public class SpringBootMain {
     public static void main(String[] args) throws Exception {
         SpringApplication.run(SpringBootMain.class, args);

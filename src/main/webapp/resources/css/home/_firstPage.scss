@@ -1,0 +1,29 @@
+.first-page {
+    .title-container {
+        .title {
+            font-size: 30px;
+        }
+    }
+    .content-container {
+        margin-top: 15px;
+        .content {
+            margin-bottom: 3px;
+            .content-key, .content-value {
+                display: inline-block;
+            }
+        }
+        .left-part {
+            display: inline-block;
+            width: 70%;
+        }
+        .right-part {
+            display: inline-block;
+            width: 30%;
+            vertical-align: top;
+            text-align: right;
+            .bigHeadPhoto {
+                width: 150px;
+            }
+        }
+    }
+}

@@ -29,7 +29,7 @@ public class initData {
         if (isCreate) {
             Resume resume = new Resume();
             resume.setName("郭政維");
-            resume.setImg("test.jpg");
+            resume.setImg("bigHeadPhoto.jpg");
             resume.setListContents(Arrays.asList(
                     new ListContent("應徵項目", "Java程式設計師", resume),
                     new ListContent("英文姓名", "CHENG-WEI,KUO", resume),

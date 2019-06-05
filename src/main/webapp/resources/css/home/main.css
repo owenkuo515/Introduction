@@ -6,3 +6,44 @@
     text-align: center; }
     #home-container .banner-container .title {
       font-size: 40px; }
+  #home-container .page-container .page {
+    width: 21cm;
+    height: 29.7cm;
+    border: 1px solid rgba(77, 77, 77, 0.3);
+    margin: 20px auto;
+    padding: 30px;
+    box-sizing: border-box; }
+    #home-container .page-container .page .underline {
+      background-color: #5b9bd5;
+      height: 4px;
+      border-radius: 2px; }
+  #home-container .page-container .first-page .title-container .title {
+    font-size: 30px; }
+  #home-container .page-container .first-page .content-container {
+    margin-top: 15px; }
+    #home-container .page-container .first-page .content-container .content {
+      margin-bottom: 3px; }
+      #home-container .page-container .first-page .content-container .content .content-key, #home-container .page-container .first-page .content-container .content .content-value {
+        display: inline-block; }
+    #home-container .page-container .first-page .content-container .left-part {
+      display: inline-block;
+      width: 70%; }
+    #home-container .page-container .first-page .content-container .right-part {
+      display: inline-block;
+      width: 30%;
+      vertical-align: top;
+      text-align: right; }
+      #home-container .page-container .first-page .content-container .right-part .bigHeadPhoto {
+        width: 150px; }
+
+#dialog {
+  font-family: Microsoft JhengHei, serif; }
+  #dialog .img-cut {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    border: 1px solid;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }

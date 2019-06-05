@@ -14,7 +14,7 @@ home.page.shell = (function () {
     init = function ($container) {
         $container.html(configMap.main_html);
         setJqueryMap($container);
-        home.page.firstPage.init(jqueryMap.$firstPage);
+        home.page.part.init(jqueryMap.$firstPage);
     };
     return {
         init: init
