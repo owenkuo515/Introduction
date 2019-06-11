@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import idv.owen.intro.site.pojo.ImgCutPojo;
 import idv.owen.intro.site.response.GeneralResponse;
+import idv.owen.intro.site.service.ResumeService;
 import idv.owen.intro.site.util.IoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +30,10 @@ public class UploadController {
     ObjectMapper mapper;
 
     @Autowired
-    public UploadController(IoUtil ioUtil){
+    ResumeService resumeService;
+
+    @Autowired
+    public UploadController(IoUtil ioUtil) {
         this.ioUtil = ioUtil;
     }
 
@@ -41,13 +45,17 @@ public class UploadController {
         return GeneralResponse.successResponse("success", result);
     }
 
-    @PostMapping(value = "/rest/imgCut", produces = "application/json;charset=UTF-8;")
-    public ResponseEntity<ObjectNode> imgCut(@RequestBody ImgCutPojo imgCutPojo) throws IOException {
+    @PostMapping(value = "/rest/imgCut/{resumeId}", produces = "application/json;charset=UTF-8;")
+    public ResponseEntity<ObjectNode> imgCut(@RequestBody ImgCutPojo imgCutPojo,
+                                             @PathVariable(name = "resumeId") Long resumeId) throws IOException {
         String fileName = imgCutPojo.getFileName().replaceAll(this.prefix, "");
         imgCutPojo.setFileName(fileName);
         ObjectNode uploadResult = ioUtil.imgCutAndUpload(imgCutPojo);
         ObjectNode result = mapper.createObjectNode();
-        result.put("imgSrc", this.prefix + uploadResult.get("data").asText());
+        String afterCutImgFileName = uploadResult.get("data").asText();
+        String afterCutImgSrc = this.prefix + afterCutImgFileName;
+        resumeService.changeImg(resumeId, afterCutImgFileName);
+        result.put("imgSrc", afterCutImgSrc);
         return ResponseEntity
                 .ok()
                 .body(result);

@@ -23,6 +23,10 @@
             text-align: right;
             .bigHeadPhoto {
                 width: 150px;
+                vertical-align: bottom;
+            }
+            .edit-photo-btn {
+                cursor: pointer;
             }
         }
     }

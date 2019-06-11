@@ -6,4 +6,6 @@ public interface ResumeService {
     Resume addOne(Resume resume);
 
     Resume findById();
+
+    void changeImg(Long resumeId, String imgSrc);
 }

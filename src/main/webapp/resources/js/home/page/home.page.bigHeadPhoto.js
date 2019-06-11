@@ -1,9 +1,10 @@
 home.page.bigHeadPhoto = (function () {
     var configMap = {
-        main_html: '<img class="bigHeadPhoto" />',
+        main_html: '<button class="edit-photo-btn">編輯</button>' +
+        '<img class="bigHeadPhoto" />',
         dialog_html: '<div id="dialog">' +
         '<div>' +
-        '<input type="file" name="file" id="bigHeadPhoto"/>' +
+        '<input type="file" name="file" id="bigHeadPhotoFile"/>' +
         '<div class="img-cut"></div>' +
         '<button class="okBtn">確定</button>' +
         '</div>',
@@ -16,7 +17,7 @@ home.page.bigHeadPhoto = (function () {
             draggable: false,
             autoOpen: false,
             minHeight: 0,
-            width: 500
+            width: 394
         },
         Module_imgCutOpt: {
             selectionWidthRatio: 7,//裁減框的寬度比，可直接給實際尺寸
@@ -30,7 +31,7 @@ home.page.bigHeadPhoto = (function () {
         $dialog: null,
         $fileForm: null,
         $imgCut: null
-    }, setJqueryMap, init, onImgClick, onBigHeadPhotoChange, onImgUploadCallBack, initModule_imgCut, onOkBtnClick, uploadImgCut;
+    }, setJqueryMap, init, onEditPhotoBtnClick, onBigHeadPhotoFileChange, onImgUploadCallBack, initModule_imgCut, onOkBtnClick, uploadImgCut;
     setJqueryMap = function ($container) {
         jqueryMap.$container = $container;
         jqueryMap.$bigHeadPhoto = $container.find(".bigHeadPhoto");
@@ -38,8 +39,9 @@ home.page.bigHeadPhoto = (function () {
         jqueryMap.$fileForm = jqueryMap.$dialog.find("#fileForm");
         jqueryMap.$imgCut = jqueryMap.$dialog.find(".img-cut");
     };
-    onImgClick = function () {
+    onEditPhotoBtnClick = function () {
         jqueryMap.$dialog.dialog("open");
+        initModule_imgCut(stateMap.imgSrc);
     };
     onImgUploadCallBack = function (response) {
         initModule_imgCut(response.data.imgSrc);
@@ -51,9 +53,9 @@ home.page.bigHeadPhoto = (function () {
             jqueryMap.$imgCut.data("Module_imgCut", moduleImgCut);
             var opt = configMap.Module_imgCutOpt;
             moduleImgCut.init(jqueryMap.$imgCut, $.extend(true, {src: src}, opt));
-        }, 500);
+        }, 100);
     };
-    onBigHeadPhotoChange = function () {
+    onBigHeadPhotoFileChange = function () {
         var form = new FormData();
         form.append('file', this.files[0]);
         $.ajax({
@@ -76,7 +78,8 @@ home.page.bigHeadPhoto = (function () {
                 data.height = data.height / narrowDownPercent;
             }
             data.fileName = imgSrc;
-            return $.add(configMap.imgCutUpload_url, data).then(function (response) {
+            var url = configMap.imgCutUpload_url + "/" + home.shell.getResumeData().id;
+            return $.add(url, data).then(function (response) {
                 return response.imgSrc;
             });
         } else {
@@ -86,21 +89,29 @@ home.page.bigHeadPhoto = (function () {
         }
     };
     onOkBtnClick = function () {
-        uploadImgCut(stateMap.imgSrc).then(function(afterCutImgSrc){
-            jqueryMap.$bigHeadPhoto.attr("src",afterCutImgSrc);
+        uploadImgCut(stateMap.imgSrc).then(function (afterCutImgSrc) {
+            stateMap.imgSrc = afterCutImgSrc;
+            jqueryMap.$bigHeadPhoto.attr("src", afterCutImgSrc);
             jqueryMap.$dialog.dialog("close");
         });
     };
 
     init = function ($container, imgSrc) {
+        stateMap.imgSrc = imgSrc;
         var $img = $(configMap.main_html);
         $img.attr("src", imgSrc);
         $container.append($img);
         setJqueryMap($container);
         jqueryMap.$dialog.dialog(configMap.dialog_option);
-        $img.click(onImgClick);
+        $container.on("click", ".edit-photo-btn", onEditPhotoBtnClick);
         jqueryMap.$dialog.on("click", ".okBtn", onOkBtnClick);
-        $("body").on("change", "#bigHeadPhoto", onBigHeadPhotoChange)
+        $("#bigHeadPhotoFile").change(onBigHeadPhotoFileChange).click(function () {
+            $(this).val("");
+        });
+        //$("body").on("change", "#bigHeadPhotoFile", onBigHeadPhotoFileChange);
+        //$("body").on("click", "#bigHeadPhotoFile", function () {
+        //    $(this).val("");
+        //});
     };
     return {
         init: init

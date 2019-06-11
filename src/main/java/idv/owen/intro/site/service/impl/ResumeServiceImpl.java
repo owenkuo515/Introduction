@@ -21,4 +21,15 @@ public class ResumeServiceImpl implements ResumeService {
     public Resume findById() {
         return resumeRepository.findById(1L).orElse(null);
     }
+
+    public Resume findById(Long id) {
+        return resumeRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void changeImg(Long resumeId, String imgSrc) {
+        Resume resume = findById(resumeId);
+        resume.setImg(imgSrc);
+        resumeRepository.save(resume);
+    }
 }
