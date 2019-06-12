@@ -11,10 +11,47 @@
             .content-key, .content-value {
                 display: inline-block;
             }
+            .content-key {
+                min-width: 65px;
+            }
+            .delete {
+                color: #cd3838;
+                font-weight: bold;
+                margin-left: 10px;
+                cursor: pointer;
+                display: none;
+            }
+            &:hover {
+                .delete {
+                    display: inline-block;
+                }
+            }
         }
+
         .left-part {
             display: inline-block;
             width: 70%;
+            .addListContent-container {
+                .content-key-input {
+                    width: 60px;
+                }
+                .content-value-input {
+                    width: 250px;
+                    margin-right: 5px;
+                }
+            }
+            .addListContentIcon {
+                text-align: center;
+                font-size: 25px;
+                color: #5b9bd5;
+                width: 30px;
+                height: 30px;
+                border: 1px solid;
+                border-radius: 16px;
+                line-height: 1;
+                cursor: pointer;
+                margin-top: 5px;
+            }
         }
         .right-part {
             display: inline-block;

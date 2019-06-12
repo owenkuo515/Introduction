@@ -1,13 +1,14 @@
 package idv.owen.intro.site.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ListContent")
-@JsonIgnoreProperties(value = {"resume"})
+//@JsonIgnoreProperties(value = {"resume"})
 public class ListContent extends BaseEntity {
 
     public ListContent() {
@@ -47,7 +48,7 @@ public class ListContent extends BaseEntity {
     public void setValue(String value) {
         this.value = value;
     }
-
+    @JsonIgnore
     public Resume getResume() {
         return resume;
     }
