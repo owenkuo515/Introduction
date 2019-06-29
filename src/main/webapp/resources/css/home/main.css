@@ -8,7 +8,6 @@
       font-size: 40px; }
   #home-container .page-container .page {
     width: 21cm;
-    height: 29.7cm;
     border: 1px solid rgba(77, 77, 77, 0.3);
     margin: 20px auto;
     padding: 30px;
@@ -64,6 +63,20 @@
         vertical-align: bottom; }
       #home-container .page-container .first-page .content-container .right-part .edit-photo-btn {
         cursor: pointer; }
+  #home-container .page-container .first-page .static-part {
+    margin: 15px 0; }
+    #home-container .page-container .first-page .static-part ul {
+      margin: 7px 0; }
+    #home-container .page-container .first-page .static-part .title-container .title {
+      font-size: 25px; }
+    #home-container .page-container .first-page .static-part.experience .content {
+      display: inline-block; }
+      #home-container .page-container .first-page .static-part.experience .content:nth-child(1), #home-container .page-container .first-page .static-part.experience .content:nth-child(3) {
+        width: 50%; }
+    #home-container .page-container .first-page .static-part.works ul.first-child {
+      list-style-type: none; }
+    #home-container .page-container .first-page .static-part.works ul.second-child {
+      list-style-type: decimal; }
 
 #dialog {
   font-family: Microsoft JhengHei, serif; }

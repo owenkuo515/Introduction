@@ -31,7 +31,6 @@ public class initData {
             resume.setName("郭政維");
             resume.setImg("bigHeadPhoto.jpg");
             resume.setListContents(Arrays.asList(
-                    new ListContent("應徵項目", "Java程式設計師", resume),
                     new ListContent("英文姓名", "CHENG-WEI,KUO", resume),
                     new ListContent("出生日期", "1991年05月15日", resume),
                     new ListContent("現居住所", "新北市中和區中山路三段37巷34號17樓", resume),

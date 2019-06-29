@@ -1,0 +1,27 @@
+.static-part {
+    margin: 15px 0;
+    ul{
+        margin: 7px 0;
+    }
+    .title-container {
+        .title {
+            font-size: 25px;
+        }
+    }
+    &.experience {
+        .content {
+            display: inline-block;
+            &:nth-child(1), &:nth-child(3) {
+                width: 50%;
+            }
+        }
+    }
+    &.works {
+        ul.first-child {
+            list-style-type: none;
+        }
+        ul.second-child {
+            list-style-type: decimal;
+        }
+    }
+}

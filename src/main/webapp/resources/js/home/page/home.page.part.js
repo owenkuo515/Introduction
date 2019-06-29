@@ -2,10 +2,6 @@ home.page.part = (function () {
     var configMap = {
         main_html: '',
         part_html: '<div class="part-container"></div>',
-        title_html: '<div class="title-container">' +
-        '<div class="title"></div>' +
-        '<div class="underline"></div>' +
-        '</div>',
         contentContainer_html: '<div class="content-container"></div>',
         leftPart_html: '<div class="left-part"></div>',
         rightPart_html: '<div class="right-part"></div>',
@@ -25,14 +21,9 @@ home.page.part = (function () {
         deleteListContent_url: '/rest/listContent/'
     }, stateMap = {}, jqueryMap = {
         $container: null
-    }, setJqueryMap, init, buildPart, buildTitleContainer, buildContentContainer, renderListContent, onDeleteClick, onAddListContentClick, onCancelClick, onOkClick, buildListContent;
+    }, setJqueryMap, init, buildPart, buildContentContainer, renderListContent, onDeleteClick, onAddListContentClick, onCancelClick, onOkClick, buildListContent;
     setJqueryMap = function ($container) {
         jqueryMap.$container = $container;
-    };
-    buildTitleContainer = function (resumeData) {
-        var $titleContainer = $(configMap.title_html);
-        $titleContainer.find(".title").html(resumeData.name);
-        return $titleContainer;
     };
     buildListContent = function (content) {
         var $content = $(configMap.content_html);
@@ -60,7 +51,7 @@ home.page.part = (function () {
     };
     buildPart = function (resumeData) {
         var $partContainer = $(configMap.part_html);
-        $partContainer.append(buildTitleContainer(resumeData));
+        $partContainer.append(home.page.shell.buildTitleContainer(resumeData.name));
         $partContainer.append(buildContentContainer(resumeData));
         return $partContainer;
     };
@@ -107,6 +98,7 @@ home.page.part = (function () {
     init = function ($container) {
         setJqueryMap($container);
         $container.append(buildPart(home.shell.getResumeData()));
+        home.page.staticPart.render($container);
         $container.on("click", ".left-part .content .delete", onDeleteClick);
         $container.on("click", ".left-part .addListContentIcon", onAddListContentClick);
         $container.on("click", ".left-part .addListContent-container .ok-btn", onOkClick);
