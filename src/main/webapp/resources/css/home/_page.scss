@@ -1,4 +1,15 @@
-.first-page {
+.page-container {
+    width: 21cm;
+    //height: 29.7cm;
+    border: 1px solid rgba(77, 77, 77, 0.3);
+    margin: 10px auto 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    .underline {
+        background-color: #5b9bd5;
+        height: 4px;
+        border-radius: 2px;
+    }
     .title-container {
         .title {
             font-size: 30px;

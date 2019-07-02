@@ -1,9 +1,5 @@
 package idv.owen.intro.site.pojo;
 
-/**
- * Created by cheng.wei
- * on 2019/3/28.
- */
 public class ImgCutPojo {
     private Integer x1;
     private Integer y1;

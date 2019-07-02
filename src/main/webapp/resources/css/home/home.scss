@@ -8,31 +8,20 @@
             font-size: 40px;
         }
     }
-    .page-container {
-        .page {
-            width: 21cm;
-            //height: 29.7cm;
-            border: 1px solid rgba(77, 77, 77, 0.3);
-            margin: 20px auto;
-            padding: 30px;
-            box-sizing: border-box;
-            .underline{
-                background-color:  #5b9bd5;
-                height: 4px;
-                border-radius: 2px;
-            }
-        }
-        @import "firstPage";
+    .btn-container{
+        width: 21cm;
+        margin: 5px auto auto;
     }
 
 }
+@import "page";
 #dialog {
-    font-family: Microsoft JhengHei, serif;// serif for intellij warning
-    .img-cut{
+    font-family: Microsoft JhengHei, serif; // serif for intellij warning
+    .img-cut {
         position: relative;
         width: 350px;
         height: 450px;
-        border:1px solid rgba(77, 77, 77, 0.5);
+        border: 1px solid rgba(77, 77, 77, 0.5);
         padding: 5px;
         display: flex;
         justify-content: center;

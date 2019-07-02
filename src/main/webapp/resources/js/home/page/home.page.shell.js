@@ -1,19 +1,16 @@
 home.page.shell = (function () {
     var configMap = {
-        main_html: '' +
-        '<div class="first-page page"></div>' +
-        '<div class="second-page page"></div>',
+        main_html: '',
         title_html: '<div class="title-container">' +
         '<div class="title"></div>' +
         '<div class="underline"></div>' +
         '</div>'
     }, stateMap = {}, jqueryMap = {
         $container: null,
-        $firstPage:null
+        $firstPage: null
     }, setJqueryMap, init, buildTitleContainer;
     setJqueryMap = function ($container) {
         jqueryMap.$container = $container;
-        jqueryMap.$firstPage = $container.find(".first-page")
     };
     buildTitleContainer = function (name) {
         var $titleContainer = $(configMap.title_html);
@@ -23,11 +20,11 @@ home.page.shell = (function () {
     init = function ($container) {
         $container.html(configMap.main_html);
         setJqueryMap($container);
-        home.page.part.init(jqueryMap.$firstPage);
+        home.page.part.init($container);
     };
     return {
         init: init,
-        buildTitleContainer:buildTitleContainer
+        buildTitleContainer: buildTitleContainer
 
     }
 })();
