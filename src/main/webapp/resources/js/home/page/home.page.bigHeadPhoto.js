@@ -19,7 +19,7 @@ home.page.bigHeadPhoto = (function () {
             minHeight: 0,
             width: 394
         },
-        Module_imgCutOpt: {
+        imgCutOpt: {
             selectionWidthRatio: 7,//裁減框的寬度比，可直接給實際尺寸
             selectionHeightRatio: 9//裁減框的高度比，可直接給實際尺寸
         }
@@ -31,7 +31,7 @@ home.page.bigHeadPhoto = (function () {
         $dialog: null,
         $fileForm: null,
         $imgCut: null
-    }, setJqueryMap, init, onEditPhotoBtnClick, onBigHeadPhotoFileChange, onImgUploadCallBack, initModule_imgCut, onOkBtnClick, uploadImgCut;
+    }, setJqueryMap, init, onEditPhotoBtnClick, onBigHeadPhotoFileChange, onImgUploadCallBack, initImgCut, onOkBtnClick, uploadImgCut;
     setJqueryMap = function ($container) {
         jqueryMap.$container = $container;
         jqueryMap.$bigHeadPhoto = $container.find(".bigHeadPhoto");
@@ -41,18 +41,18 @@ home.page.bigHeadPhoto = (function () {
     };
     onEditPhotoBtnClick = function () {
         jqueryMap.$dialog.dialog("open");
-        initModule_imgCut(stateMap.imgSrc);
+        initImgCut(stateMap.imgSrc);
     };
     onImgUploadCallBack = function (response) {
-        initModule_imgCut(response.data.imgSrc);
+        initImgCut(response.data.imgSrc);
     };
-    initModule_imgCut = function (src) {
+    initImgCut = function (src) {
         stateMap.imgSrc = src;
         setTimeout(function () {
-            var moduleImgCut = new Module_imgCut();
-            jqueryMap.$imgCut.data("Module_imgCut", moduleImgCut);
-            var opt = configMap.Module_imgCutOpt;
-            moduleImgCut.init(jqueryMap.$imgCut, $.extend(true, {src: src}, opt));
+            var imgCutModule = new imgCut.shell();
+            jqueryMap.$imgCut.data("imgCut", imgCutModule);
+            var opt = configMap.imgCutOpt;
+            imgCutModule.init(jqueryMap.$imgCut, $.extend(true, {src: src}, opt));
         }, 100);
     };
     onBigHeadPhotoFileChange = function () {
@@ -67,7 +67,7 @@ home.page.bigHeadPhoto = (function () {
         }).then(onImgUploadCallBack);
     };
     uploadImgCut = function (imgSrc) {
-        var moduleImgCut = jqueryMap.$imgCut.data("Module_imgCut");
+        var moduleImgCut = jqueryMap.$imgCut.data("imgCut");
         if (moduleImgCut) {
             var data = moduleImgCut.getSelection();
             var narrowDownPercent = moduleImgCut.getNarrowDownPercent();

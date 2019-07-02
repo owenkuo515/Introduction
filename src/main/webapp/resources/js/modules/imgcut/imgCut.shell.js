@@ -1,4 +1,3 @@
-var imgCut = {};
 /**
  * Created by cheng.wei
  * on 2019/2/21.
@@ -6,16 +5,13 @@ var imgCut = {};
 imgCut.shell = function () {
     var configMap = {
         main_html: '<img />'
-    },
-        jqueryMap = {
+    }, jqueryMap = {
         $imgAreaSelect: null
-    },
-        stateMap = {
+    },stateMap={
         narrowDownPercent: 0
-    },
-        init;
-    init = function init($container, opt) {
-        $container.addClass("Module_imgCut");
+    }, init;
+    init = function ($container, opt) {
+        $container.addClass("imgCut");
         var containerWidth = $container.width();
         var containerHeight = $container.height();
         var aspectRatioWidth = containerWidth;
@@ -52,17 +48,18 @@ imgCut.shell = function () {
             }
             var x1, y1, x2, y2, diff;
             //拿圖片寬度為基準算出裁減框的高，若高度小於圖片高，則裁減框最大是頂到圖片的左右，上下置中
-            var selectionHeight = afterChangeImgWidth / aspectRatioWidth * aspectRatioHeight;
+            var selectionHeight = ( afterChangeImgWidth / aspectRatioWidth ) * aspectRatioHeight;
             if (selectionHeight <= afterChangeImgHeight) {
-                diff = (afterChangeImgHeight - selectionHeight) / 2;
+                diff = ( afterChangeImgHeight - selectionHeight ) / 2;
                 x1 = 0;
                 y1 = diff;
                 x2 = afterChangeImgWidth;
                 y2 = selectionHeight + diff;
-            } else {
+            }
+            else {
                 //若裁減框高度大於圖片高度，則裁減框最大是頂到圖片上下，左右置中
-                var selectionWidth = afterChangeImgHeight / aspectRatioHeight * aspectRatioWidth;
-                diff = (afterChangeImgWidth - selectionWidth) / 2;
+                var selectionWidth = ( afterChangeImgHeight / aspectRatioHeight ) * aspectRatioWidth;
+                diff = ( afterChangeImgWidth - selectionWidth ) / 2;
                 x1 = diff;
                 y1 = 0;
                 x2 = selectionWidth + diff;
@@ -82,12 +79,11 @@ imgCut.shell = function () {
     };
     return {
         init: init,
-        getSelection: function getSelection() {
+        getSelection: function () {
             return jqueryMap.$imgAreaSelect.getSelection();
         },
-        getNarrowDownPercent: function getNarrowDownPercent() {
+        getNarrowDownPercent: function () {
             return stateMap.narrowDownPercent;
         }
-    };
+    }
 };
-var Module_imgCut = imgCut.shell;

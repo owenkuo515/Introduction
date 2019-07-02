@@ -1,0 +1,7 @@
+.imgCut {
+    position: relative
+}
+
+.imgCut .imgareaselect-outer {
+    box-sizing: content-box !important
+}
