@@ -7,10 +7,10 @@ import java.util.List;
 @Table(name = "Resume")
 public class Resume extends BaseEntity {
 
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "nvarchar(MAX)")
     String name;
 
-    @Column(name = "img")
+    @Column(name = "img", columnDefinition = "nvarchar(MAX)")
     String img;
 
     @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL)

@@ -26,4 +26,11 @@ public class ResumeController {
         resume.setImg(this.prefix + resume.getImg());
         return GeneralResponse.successResponse("success", resume);
     }
+
+    @GetMapping("/reset")
+    public JsonNode accessStorageFile() throws Exception {
+        Resume resume = resumeService.reset();
+        resume.setImg(this.prefix + resume.getImg());
+        return GeneralResponse.successResponse("success", resume);
+    }
 }

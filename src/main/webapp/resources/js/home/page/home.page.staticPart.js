@@ -56,13 +56,13 @@ home.page.staticPart = (function () {
         '<div>特殊客製需求</div>' +
         '<ul>' +
         '<li>Excel跨分頁及同頁之一對多關係匯入</li>' +
-        '<li>PDF動態內容頁數匯出，500頁匯出時間只需約90秒</li>' +
+        '<li>匯出PDF時內容自動分頁，500頁匯出時間只需約90秒</li>' +
         '<li>前端模組開發系統：可從內部網站看到各模組，以便挑選各專案合適之模組</li>' +
         '</ul>' +
         '</div>',
         works_html:'<div class="content-container">' +
         '<ul>' +
-        '<li><div class="title">Web 履歷表</div>' +
+        '<li><div class="title"><div style="font-size: 20px">Web 履歷表</div><a style="margin-bottom: 5px;display: inline-block" href="http://intro.southeastasia.cloudapp.azure.com/">http://intro.southeastasia.cloudapp.azure.com/</a></div>' +
         '<div>使用之技術：</div>' +
         '<ul class="first-child">' +
         '<li>前端：jQuery、Webpack、Scss</li>' +

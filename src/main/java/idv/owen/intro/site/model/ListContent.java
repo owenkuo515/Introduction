@@ -25,9 +25,9 @@ public class ListContent extends BaseEntity {
         this.resume = resume;
     }
 
-    @Column(name = "contentKey")
+    @Column(name = "contentKey", columnDefinition = "nvarchar(MAX)")
     String contentKey;
-    @Column(name = "value")
+    @Column(name = "value", columnDefinition = "nvarchar(MAX)")
     String value;
     @ManyToOne
     @JoinColumn(name = "resume_id")
