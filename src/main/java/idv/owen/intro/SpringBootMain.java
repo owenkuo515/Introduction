@@ -14,7 +14,7 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource({"classpath:intro.properties"})
 public class SpringBootMain {
     public static void main(String[] args) throws Exception {
-        System.out.println("test");
+        System.out.println("test123");
         SpringApplication.run(SpringBootMain.class, args);
     }
 
